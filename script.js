@@ -6,7 +6,7 @@ function addTask() {
     const taskText = taskInput.value.trim();
 
     if (taskText === '') {
-        alert('Nhập tên công việc đã nhé bạn ơi!');
+        alert('Không được để chống, vui lòng nhập công việc muốn thêm.');
         return;
     }
 
