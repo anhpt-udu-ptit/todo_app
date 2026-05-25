@@ -1,14 +1,15 @@
-const nhapCongViec = document.getElementById("task-input");
-const themCongViec = document.getElementById("add-btn");
-const dsCongviec = document.getElementById("task-lish");
+const taskInput = document.getElementById('task-input');
+const addBtn = document.getElementById('add-btn');
+const taskList = document.getElementById('task-list');
 
-function them(){
-    const nhapCongViec = nhapCongViec.value.trim();
+function addTask() {
+    const taskText = taskInput.value.trim();
 
-    if(nhapCongViec == ''){
-        alert("Không được để chống, hãy nhập công việc bạn muốn thêm.");
+    if (taskText === '') {
+        alert('Nhập tên công việc đã nhé bạn ơi!');
         return;
     }
+
     const li = document.createElement('li');
 
     const textSpan = document.createElement('span');
@@ -19,26 +20,26 @@ function them(){
         li.classList.toggle('completed');
     });
 
-    const xoaCongviec = document.createElement('button');
-    xoaCongviec.textContent = 'Xóa';
-    xoaCongviec.className = 'delete-btn';
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Xóa';
+    deleteBtn.className = 'delete-btn';
     
-    xoaCongviec.addEventListener('click', function(e) {
+    deleteBtn.addEventListener('click', function(e) {
         e.stopPropagation();
         taskList.removeChild(li);
     });
 
-    li.appendChild(xoaCongviec);
+    li.appendChild(deleteBtn);
     taskList.appendChild(li);
 
     taskInput.value = '';
     taskInput.focus();
 }
 
-addBtn.addEventListener('click', them);
+addBtn.addEventListener('click', addTask);
 
 taskInput.addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
-        them();
+        addTask();
     }
 });
